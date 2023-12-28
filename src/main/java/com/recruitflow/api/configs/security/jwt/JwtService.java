@@ -1,4 +1,4 @@
-package com.recruitflow.api.security.jwt;
+package com.recruitflow.api.configs.security.jwt;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

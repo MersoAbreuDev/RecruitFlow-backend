@@ -7,7 +7,7 @@ import com.recruitflow.api.repositories.UsuarioRepository;
 import com.recruitflow.api.requestDTO.AuthenticationRequestDTO;
 import com.recruitflow.api.requestDTO.RegisterRequestDTO;
 import com.recruitflow.api.responseDTO.AuthenticationResponseDTO;
-import com.recruitflow.api.security.jwt.JwtService;
+import com.recruitflow.api.configs.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
