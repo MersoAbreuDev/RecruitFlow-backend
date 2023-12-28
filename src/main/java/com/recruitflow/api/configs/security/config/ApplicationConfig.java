@@ -1,4 +1,4 @@
-package com.recruitflow.api.security.config;
+package com.recruitflow.api.configs.security.config;
 
 import com.recruitflow.api.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
