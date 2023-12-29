@@ -8,12 +8,17 @@ import com.recruitflow.api.requestDTO.AuthenticationRequestDTO;
 import com.recruitflow.api.requestDTO.RegisterRequestDTO;
 import com.recruitflow.api.responseDTO.AuthenticationResponseDTO;
 import com.recruitflow.api.configs.security.jwt.JwtService;
+import com.recruitflow.api.responseDTO.VagaResponseDTO;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +29,8 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
 
     private final JwtService jwtService;
+
+    private final ModelMapper modelMapper;
 
     private final AuthenticationManager authenticationManager;
 
@@ -45,6 +52,7 @@ public class AuthenticationService {
         return  AuthenticationResponseDTO.builder()
                 .token(jwtToken)
                 .nome(usuario.getNome())
+                .role(usuario.getRole())
                 .build();
     }
 
@@ -56,11 +64,19 @@ public class AuthenticationService {
                 )
         );
         var user = repository.findByEmail(requestDTO.getEmail()).orElseThrow(() -> new UsernameNotFoundException("Usuario nao encontrado"));
+
         String nome = user.getNome();
+        String role = String.valueOf(user.getRole());
         var jwtToken = jwtService.generateToken(user);
         return  AuthenticationResponseDTO.builder()
                 .token(jwtToken)
+                .role(Role.valueOf(role))
                 .nome(nome)
                 .build();
+    }
+
+
+    public List<AuthenticationResponseDTO> getAllUser() {
+        return this.repository.findAll().stream().map(user -> this.modelMapper.map(user, AuthenticationResponseDTO.class)).collect(Collectors.toList());
     }
 }

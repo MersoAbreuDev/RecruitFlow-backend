@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.recruitflow.api.services.AuthenticationService;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequiredArgsConstructor
@@ -31,5 +33,11 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponseDTO> authenticate(
             @RequestBody AuthenticationRequestDTO requestDTO) {
         return ResponseEntity.ok(service.authenticate(requestDTO));
+    }
+
+    @GetMapping("/buscar-todos")
+    @Operation(summary = "Buscar todos Usuarios", description = "Endpoint para buscar todos os usuários")
+    public ResponseEntity<List<AuthenticationResponseDTO>> getAll() {
+        return ResponseEntity.ok(service.getAllUser());
     }
 }
