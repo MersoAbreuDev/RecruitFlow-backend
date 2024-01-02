@@ -27,12 +27,13 @@ public class Usuario implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String senha;
-
     private String email;
 
     private String nome;
+
+    @OneToOne(mappedBy = "usuario")
+    private PerfilCandidato perfilCandidato;
 
     @Enumerated(EnumType.STRING)
     private Role role;
