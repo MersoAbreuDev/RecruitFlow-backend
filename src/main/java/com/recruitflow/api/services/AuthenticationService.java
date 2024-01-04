@@ -66,10 +66,12 @@ public class AuthenticationService {
         var user = repository.findByEmail(requestDTO.getEmail()).orElseThrow(() -> new UsernameNotFoundException("Usuario nao encontrado"));
 
         String nome = user.getNome();
+        Long id = user.getId();
         String role = String.valueOf(user.getRole());
         var jwtToken = jwtService.generateToken(user);
         return  AuthenticationResponseDTO.builder()
                 .token(jwtToken)
+                .id(id)
                 .role(Role.valueOf(role))
                 .nome(nome)
                 .build();

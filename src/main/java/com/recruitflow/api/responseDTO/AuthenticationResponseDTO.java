@@ -14,6 +14,8 @@ public class AuthenticationResponseDTO {
 
     private String token;
 
+    private Long id;
+
     private String nome;
 
     private Role role;

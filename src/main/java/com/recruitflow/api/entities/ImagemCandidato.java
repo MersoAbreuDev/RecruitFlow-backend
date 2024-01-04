@@ -19,8 +19,8 @@ public class ImagemCandidato implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Lob
-    private byte[] imagem;
+    @Column(columnDefinition = "TEXT")
+    private String imagem;
 
     private Long idCandidato;
 

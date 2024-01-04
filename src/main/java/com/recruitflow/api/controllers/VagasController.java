@@ -17,9 +17,8 @@ import java.util.List;
 
 @RequestMapping("vagas")
 @RestController
-@CrossOrigin(origins = "*")
 @Tag(name = "Vagas Controller", description = "APIs relacionadas a Vagas controller")
-@SecurityRequirement(name = "bearerAuth")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 public class VagasController {
 

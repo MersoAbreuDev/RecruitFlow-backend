@@ -24,7 +24,9 @@ public class PerfilCandidatoRequestDTO {
 
     private Usuario usuario;
 
-    private String linkedin;
+    private String link;
 
     private Endereco endereco;
+
+    private String imagem;
 }

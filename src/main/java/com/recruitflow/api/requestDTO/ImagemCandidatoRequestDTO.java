@@ -13,7 +13,7 @@ public class ImagemCandidatoRequestDTO {
     private Long id;
 
     @Lob
-    private byte[] imagem;
+    private String imagem;
 
     private Long idCandidato;
 }

@@ -20,12 +20,17 @@ public class ImagemService {
     private final ModelMapper modelMapper;
 
     @Transactional
-    public ImagemCandidato salvarImagemCandidato(Long id, byte[] imagemBytes) {
-        ImagemCandidato imagemCandidato = new ImagemCandidato();
-        imagemCandidato.setIdCandidato(id);
-        imagemCandidato.setImagem(imagemBytes);
-        imagemCandidato = this.imagemRepository.save(imagemCandidato);
-        return imagemCandidato;
+    public ImagemCandidato salvarImagemCandidato(Long id,String imagem) {
+        try {
+            ImagemCandidato imagemCandidato = new ImagemCandidato();
+            imagemCandidato.setIdCandidato(id);
+            imagemCandidato.setImagem(imagem);
+            this.imagemRepository.save(imagemCandidato);
+            return imagemCandidato;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public ImagemCandidatoResponseDTO buscarImagemPorIdCandidato(Long id) {
@@ -34,4 +39,6 @@ public class ImagemService {
         }).orElseThrow(() -> new ObjetoNotFoundException("Perfil não encontrado."));
 
     }
+
+
 }

@@ -27,7 +27,7 @@ public class PerfilCandidato implements Serializable {
 
     private String email;
 
-    private String linkedin;
+    private String link;
 
     @OneToOne
     @JoinColumn(name = "usuario_id", unique = true)
@@ -36,8 +36,7 @@ public class PerfilCandidato implements Serializable {
     @Embedded
     private Endereco endereco;
 
-
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "imagem_candidato_id")
     private ImagemCandidato imagemCandidato;
 

@@ -14,17 +14,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("imagem-candidato")
 @RestController("imagem-candidato")
-@CrossOrigin(origins = "*")
 @Tag(name = "Imagem Candidato Controller", description = "APIs relacionadas a imagem do Candidato controller")
-
 @RequiredArgsConstructor
 public class ImagemController {
 
     private final ImagemService imagemService;
 
-    @GetMapping("/{id}")
-    @Operation(summary = "Buscar a imagem do Candidato", description = "Endpoint para Buscar a imagem do Candidato")
-    public ResponseEntity<ImagemCandidatoResponseDTO> obterImagemPeloIdCandidato(@PathVariable Long id) {
-        return ResponseEntity.ok(this.imagemService.buscarImagemPorIdCandidato(id));
-    }
+//    @GetMapping("/{id}")
+//    @Operation(summary = "Buscar a imagem do Candidato", description = "Endpoint para Buscar a imagem do Candidato")
+//    public ResponseEntity<ImagemCandidatoResponseDTO> obterImagemPeloIdCandidato(@PathVariable Long id) {
+//        return ResponseEntity.ok(this.imagemService.buscarImagemPorIdCandidato(id));
+//    }
 }

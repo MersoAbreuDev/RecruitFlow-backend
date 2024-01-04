@@ -2,6 +2,7 @@ package com.recruitflow.api.responseDTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.recruitflow.api.entities.Endereco;
+import com.recruitflow.api.entities.ImagemCandidato;
 import com.recruitflow.api.entities.PerfilCandidato;
 import com.recruitflow.api.entities.Usuario;
 import lombok.AllArgsConstructor;
@@ -22,10 +23,12 @@ public class PerfilCandidatoResponseDTO {
 
     private String email;
 
-    private String linkedin;
+    private String link;
 
     @JsonIgnore
     private Usuario usuario;
 
     private Endereco endereco;
+
+    private String imagem;
 }
