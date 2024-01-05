@@ -14,7 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("perfil-candidatos")
 @RestController
 @Tag(name = "Perfil Candidato Controller", description = "APIs relacionadas a Perfil do Candidato controller")

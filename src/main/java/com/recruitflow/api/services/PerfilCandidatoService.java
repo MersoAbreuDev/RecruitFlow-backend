@@ -58,7 +58,7 @@ public class PerfilCandidatoService {
     }
 
     public PerfilCandidatoResponseDTO alterarPerfilCandidato(Long id, PerfilCandidatoRequestDTO perfilCandidatoRequestDTO) {
-        PerfilCandidato perfil = this.perfilCandidatoRepository.findById(id).get();
+        PerfilCandidato perfil = this.perfilCandidatoRepository.findByUsuarioId(id).get();
             perfil.setEndereco(perfilCandidatoRequestDTO.getEndereco());
             perfil.setLink(perfilCandidatoRequestDTO.getLink());
             perfil.setNome(perfilCandidatoRequestDTO.getNome());
