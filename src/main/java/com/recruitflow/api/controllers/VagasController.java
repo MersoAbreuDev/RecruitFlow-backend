@@ -35,9 +35,18 @@ public class VagasController {
                 this.vagaService.buscarTodos(PageRequest.of(pagina, quantidade, Sort.by(Sort.Direction.valueOf(ordem), ordenarPor))), HttpStatus.OK);
 
     }
+
     @PostMapping
     @Operation(summary = "Cadastrar Vagas", description = "Endpoint para Cadastrar vagas")
-    public ResponseEntity<VagaResponseDTO> cadastrarVagas(@RequestBody VagaRequestDTO vagaRequestDTO){
+    public ResponseEntity<VagaResponseDTO> cadastrarVagas(@RequestBody VagaRequestDTO vagaRequestDTO) {
         return ResponseEntity.ok(this.vagaService.salvar(vagaRequestDTO));
     }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Buscar Vagas Por Id", description = "Endpoint para Buscar Vagas por Id")
+    public ResponseEntity<VagaResponseDTO> cadastrarVagas(@PathVariable Long id) {
+        return ResponseEntity.ok(this.vagaService.buscarVagaPorId(id));
+    }
+
+
 }

@@ -20,6 +20,7 @@ public class VagaService {
     private final ModelMapper modelMapper;
 
     private final VagaRepository vagaRepository;
+
     public List<VagaResponseDTO> buscarTodos(PageRequest pageRequest) {
         return this.vagaRepository.findAll(pageRequest).stream().map(vaga -> this.modelMapper.map(vaga, VagaResponseDTO.class)).collect(Collectors.toList());
     }
@@ -27,6 +28,11 @@ public class VagaService {
     public VagaResponseDTO salvar(VagaRequestDTO vagaRequestDTO) {
         Vaga vaga = this.modelMapper.map(vagaRequestDTO, Vaga.class);
         vaga = this.vagaRepository.save(vaga);
+        return this.modelMapper.map(vaga, VagaResponseDTO.class);
+    }
+
+    public VagaResponseDTO buscarVagaPorId(Long id) {
+        Vaga vaga = vagaRepository.findById(id).get();
         return this.modelMapper.map(vaga, VagaResponseDTO.class);
     }
 }
