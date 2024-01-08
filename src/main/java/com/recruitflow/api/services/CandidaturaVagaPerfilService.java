@@ -89,4 +89,5 @@ public class CandidaturaVagaPerfilService {
                 .stream().map(candidatos -> this.modelMapper.map(candidatos, CandidaturaVagaResponseDTO.class)
                 ).collect(Collectors.toList());
     }
+
 }

@@ -31,9 +31,16 @@ public class PerfilCandidatoController {
     }
 
     @GetMapping("/buscar/{id}")
-    @Operation(summary = "Buscar o Perfil do Candidato", description = "Endpoint para Buscar o Perfil do Candidato por ID")
-    public ResponseEntity<PerfilCandidatoResponseDTO> buscarPerfilCandidatoPorId(@PathVariable Long id) {
+    @Operation(summary = "Buscar o Perfil do Candidato por ID do Usuario", description = "Endpoint para Buscar o Perfil do Candidato por ID do Usuario")
+    public ResponseEntity<PerfilCandidatoResponseDTO> buscarPerfilCandidatoPorIdUsuario(@PathVariable Long id) {
         PerfilCandidatoResponseDTO responseDTO = perfilCandidatoService.buscarCandidatoPorIdUsuario(id);
+        return ResponseEntity.ok(responseDTO);
+    }
+
+    @GetMapping("/buscar-candidato-id/{id}")
+    @Operation(summary = "Buscar o Perfil do Candidato por ID", description = "Endpoint para Buscar o Perfil do Candidato por ID")
+    public ResponseEntity<PerfilCandidatoResponseDTO> buscarPerfilCandidatoPorId(@PathVariable Long id) {
+        PerfilCandidatoResponseDTO responseDTO = perfilCandidatoService.buscarPerfilCandidatoPorId(id);
         return ResponseEntity.ok(responseDTO);
     }
 

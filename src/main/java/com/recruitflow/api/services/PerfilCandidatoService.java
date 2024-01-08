@@ -59,24 +59,30 @@ public class PerfilCandidatoService {
 
     public PerfilCandidatoResponseDTO alterarPerfilCandidato(Long id, PerfilCandidatoRequestDTO perfilCandidatoRequestDTO) {
         PerfilCandidato perfil = this.perfilCandidatoRepository.findByUsuarioId(id).get();
-            perfil.setEndereco(perfilCandidatoRequestDTO.getEndereco());
-            perfil.setLink(perfilCandidatoRequestDTO.getLink());
-            perfil.setNome(perfilCandidatoRequestDTO.getNome());
-            perfil.setCelular(perfilCandidatoRequestDTO.getCelular());
-            perfil.setEmail(perfilCandidatoRequestDTO.getEmail());
-            perfil.setUsuario(perfilCandidatoRequestDTO.getUsuario());
-            perfil.setUsuario(perfilCandidatoRequestDTO.getUsuario());
-            perfil = perfilCandidatoRepository.save(perfil);
-            ImagemCandidato imagem = imagemService.salvarImagemCandidato(perfil.getId(),perfilCandidatoRequestDTO.getImagem());
+        perfil.setEndereco(perfilCandidatoRequestDTO.getEndereco());
+        perfil.setLink(perfilCandidatoRequestDTO.getLink());
+        perfil.setNome(perfilCandidatoRequestDTO.getNome());
+        perfil.setCelular(perfilCandidatoRequestDTO.getCelular());
+        perfil.setEmail(perfilCandidatoRequestDTO.getEmail());
+        perfil.setUsuario(perfilCandidatoRequestDTO.getUsuario());
+        perfil.setUsuario(perfilCandidatoRequestDTO.getUsuario());
+        perfil = perfilCandidatoRepository.save(perfil);
+        ImagemCandidato imagem = imagemService.salvarImagemCandidato(perfil.getId(),perfilCandidatoRequestDTO.getImagem());
 
-            perfil.setImagemCandidato(imagem);
+        perfil.setImagemCandidato(imagem);
 
-            perfil = perfilCandidatoRepository.save(perfil);
+        perfil = perfilCandidatoRepository.save(perfil);
 
-            perfil = this.modelMapper.map(perfil, PerfilCandidato.class);
-            perfil = this.perfilCandidatoRepository.save(perfil);
+        perfil = this.modelMapper.map(perfil, PerfilCandidato.class);
+        perfil = this.perfilCandidatoRepository.save(perfil);
 
         return this.modelMapper.map(perfil, PerfilCandidatoResponseDTO.class);
 
     }
+
+    public PerfilCandidatoResponseDTO buscarPerfilCandidatoPorId(Long idPerfilCandidato) {
+        PerfilCandidato candidato = this.perfilCandidatoRepository.findById(idPerfilCandidato).get();
+        return this.modelMapper.map(candidato, PerfilCandidatoResponseDTO.class);
+    }
+
 }
